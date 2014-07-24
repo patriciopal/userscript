@@ -1,3 +1,0 @@
-// ==UserScript==
-// @name        P
-// ==/UserScript==

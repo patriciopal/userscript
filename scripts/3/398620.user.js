@@ -1,4 +1,0 @@
-// ==UserScript==
-// @name Line Pokopang Hack Cheat Android IOS
-// @description Facebook Exdous 2013,
-// ==/UserScript==
