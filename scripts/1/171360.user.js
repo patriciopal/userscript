@@ -1,6 +1,0 @@
-// ==UserScript==
-// @name       gfdbfggrghnjmuhyjgngymkkhjmhmjngvdfedfzsefgvbhftgbfvdgbfggvd
-// ==/UserScript==
-
-
-

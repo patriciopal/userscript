@@ -1,5 +1,0 @@
-// ==UserScript==
-// @name			Name
-
-// ==/UserScript==
-
