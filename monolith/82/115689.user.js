@@ -43,7 +43,7 @@ GM_registerMenuCommand("YMailTabs - nederlands", 'switchLang("nl")');
 GM_registerMenuCommand("YMailTabs - norsk", 'switchLang("no")');
 GM_registerMenuCommand("YMailTabs - polski", 'switchLang("pl")');
 GM_registerMenuCommand("YMailTabs - português", 'switchLang("pt")');
-GM_registerMenuCommand("YMailTabs - pоссия", 'switchLang("ru")');
+GM_registerMenuCommand("YMailTabs - русский", 'switchLang("ru")');
 GM_registerMenuCommand("YMailTabs - slovenská", 'switchLang("sk")');
 GM_registerMenuCommand("YMailTabs - slovenski", 'switchLang("sl")');
 GM_registerMenuCommand("YMailTabs - shqipe", 'switchLang("sq")');
