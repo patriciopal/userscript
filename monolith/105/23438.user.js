@@ -10,44 +10,20 @@
 // ==/UserScript==
 
 // Begin Script Update Checker code
-var version_scriptURL = "http://userscripts.org/scripts/source/16341.user.js"; // Change 
-
-this URL to point to a permanent copy of your own script.
-var version_timestamp = 1200722351000; // Used to differentiate one version of the script 
-
-from an older one. Use the Date.getTime() function to get a value for this.
-if(parseInt(GM_getValue("lastUpdate","0"))+86400000<=(new 
-
-Date().getTime())){GM_xmlhttpRequest({method:"GET",url:version_scriptURL+"?"+new 
-
-Date().getTime(),headers:{'Cache-Control':'no-cache'},onload:function(xhrResponse){GM_setVal
-
-ue("lastUpdate",new 
-
-Date().getTime()+"");if(parseInt(/version_timestamp\s*=\s*([0-9]+)/.exec(xhrResponse.respons
-
-eText)[1])>version_timestamp){if(confirm("There is an update available for the Greasemonkey 
-
-script 
-
-\""+xhrResponse.responseText.split("@name")[1].split("\n")[0].replace(/^\s+|\s+$/g,"")+".\"\
-
-nWould you like to go to the install page now?")){GM_openInTab(version_scriptURL);}}}});}
+var version_scriptURL = "http://userscripts.org/scripts/source/16341.user.js"; // Change this URL to point to a permanent copy of your own script.
+var version_timestamp = 1200722351000; // Used to differentiate one version of the script from an older one. Use the Date.getTime() function to get a value for this.
+if(parseInt(GM_getValue("lastUpdate","0"))+86400000<=(new Date().getTime())){GM_xmlhttpRequest({method:"GET",url:version_scriptURL+"?"+new Date().getTime(),headers:{'Cache-Control':'no-cache'},onload:function(xhrResponse){GM_setValue("lastUpdate",new Date().getTime()+"");if(parseInt(/version_timestamp\s*=\s*([0-9]+)/.exec(xhrResponse.responseText)[1])>version_timestamp){if(confirm("There is an update available for the Greasemonkey script \""+xhrResponse.responseText.split("@name")[1].split("\n")[0].replace(/^\s+|\s+$/g,"")+".\"\nWould you like to go to the install page now?")){GM_openInTab(version_scriptURL);}}}});}
 // End Script Update Checker code
 
 if (document.domain.indexOf("google.") == -1) return;
 
 // Load persistent user data
 if (!GM_getValue)
-    {alert("You need the newest version of Greasemonkey to run this script. Please 
-
-upgrade."); return;}
+    {alert("You need the newest version of Greasemonkey to run this script. Please upgrade."); return;}
 usernames = GM_getValue("usernames", "").split(",");
 passwords = GM_getValue("passwords", "").split(",");
 autologin = GM_getValue("autologin", "");
-if (typeof(autologin) == "boolean") // For backwards compatibility with older versions of 
-
-the script
+if (typeof(autologin) == "boolean") // For backwards compatibility with older versions of the script
 {
     var al = new Array(usernames.length);
     for (var i = 0; i < usernames.length; i++)
@@ -142,9 +118,7 @@ function onSelectChange()
             {alert("No accounts to remove.");}
         else
         {
-            u = parseInt(prompt('Enter the number of the account to be removed:' + 
-
-makeUserList("\n", "", true)));
+            u = parseInt(prompt('Enter the number of the account to be removed:' + makeUserList("\n", "", true)));
             if (isNaN(u)) {}
             else if ((u < 1) || (u > usernames.length))
                 {alert('Invalid option.')}
@@ -158,9 +132,7 @@ makeUserList("\n", "", true)));
                 for (var k = 0; k < un.length; k++)
                     {if(un[k]==u) j=k;}
                 if (j == -1)
-                    {alert('Account appears to have already been removed. Refresh the page 
-
-to update account list.');}
+                    {alert('Account appears to have already been removed. Refresh the page to update account list.');}
                 else
                 {
                     un.splice(j, 1);
@@ -185,9 +157,7 @@ to update account list.');}
         else if (document.location.href.indexOf("/calendar/") != -1)
             {var s = 'https://www.google.com/calendar/logout';}
         else
-            {var s = 'http://www.google.com/accounts/Logout?continue=' + 
-
-escape(window.location.href.split("#")[0]);}
+            {var s = 'http://www.google.com/accounts/Logout?continue=' + escape(window.location.href.split("#")[0]);}
         document.location.href = s;
     }
 }
@@ -195,27 +165,7 @@ escape(window.location.href.split("#")[0]);}
 function initialize()
 {
     selectBox = document.createElement("span");
-    selectBox.innerHTML = '<form name="gmLoginForm" 
-
-action="https://www.google.com/accounts/ServiceLoginAuth" method="post" 
-
-style="display:inline;"><select style="font-family:arial,san-serif; font-size:7pt; 
-
-position:relative; top:2px; padding:0px; height:13px;" name="gmSelectLogin"><option>Change 
-
-User...</option><option disabled="disabled">&#8212;&#8212;</option>' + 
-
-makeUserList('<option>', '</option>', false) + '<option 
-
-disabled="disabled">&#8212;&#8212;</option><option>Add Account...</option><option>Remove 
-
-Account...</option><option>Sign Out</option></select><input type = "hidden" name="continue" 
-
-value="' + window.location.href.split("#")[0] + '" /><input type="hidden" 
-
-name="PersistentCookie" /><input type="hidden" name="Email" /><input type="hidden" 
-
-name="Passwd" /><input type="hidden" name="service" value="' + getService() + '" /></form>';
+    selectBox.innerHTML = '<form name="gmLoginForm" action="https://www.google.com/accounts/ServiceLoginAuth" method="post" style="display:inline;"><select style="font-family:arial,san-serif; font-size:7pt; position:relative; top:2px; padding:0px; height:13px;" name="gmSelectLogin"><option>Change User...</option><option disabled="disabled">&#8212;&#8212;</option>' + makeUserList('<option>', '</option>', false) + '<option disabled="disabled">&#8212;&#8212;</option><option>Add Account...</option><option>Remove Account...</option><option>Sign Out</option></select><input type = "hidden" name="continue" value="' + window.location.href.split("#")[0] + '" /><input type="hidden" name="PersistentCookie" /><input type="hidden" name="Email" /><input type="hidden" name="Passwd" /><input type="hidden" name="service" value="' + getService() + '" /></form>';
     
     if (frames.length == 0)
         {var f = new Array(window);}
@@ -238,9 +188,7 @@ name="Passwd" /><input type="hidden" name="service" value="' + getService() + '"
                     links[i].parentNode.replaceChild(selectBox, links[i]);
                     
 
-f[j].document.forms.namedItem("gmLoginForm").elements.namedItem("gmSelectLogin").addEventLis
-
-tener('change', onSelectChange, true);
+f[j].document.forms.namedItem("gmLoginForm").elements.namedItem("gmSelectLogin").addEventListener('change', onSelectChange, true);
                 }
             }
         }
