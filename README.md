@@ -12,3 +12,4 @@ This is the massive undertaking of categorizing and sorting the scripts from the
 
 ##Wanna help?
 Send me a message.
+Or a pull request.
